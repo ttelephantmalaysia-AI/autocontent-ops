@@ -1,5 +1,13 @@
 {
-  "instagram": "Today's Market Story\n\nConflict, chokepoints, and risk repricing\nSwipe for the key trigger, timeline, and what to watch next.\n\n#MarketUpdate #Geopolitics #Macro #Trading #Infographic",
-  "linkedin": "Today's Market Story — Conflict, chokepoints, and risk repricing.\n\nThis visual brief summarizes trigger, timeline, and implications in one slide set.",
-  "x": "Today's Market Story: Conflict, chokepoints, and risk repricing. Visual breakdown in one thread-style infographic. #Markets #Macro #Geopolitics"
+  "lang": "bilingual",
+  "en": {
+    "instagram": "Today's Market Story\n\nConflict, chokepoints, and risk repricing\nSwipe for trigger, timeline, and what to watch next.\n\n#MarketUpdate #Geopolitics #Macro #Trading #Infographic",
+    "linkedin": "Today's Market Story — Conflict, chokepoints, and risk repricing.\n\nThis visual brief summarizes trigger, timeline, and implications in one slide set.",
+    "x": "Today's Market Story: Conflict, chokepoints, and risk repricing. Visual breakdown in one thread-style infographic. #Markets #Macro #Geopolitics"
+  },
+  "zh": {
+    "instagram": "Today's Market Story\n\nConflict, chokepoints, and risk repricing\n滑动查看：触发点、时间线和后续观察重点。\n\n#市场快讯 #地缘政治 #宏观 #交易 #信息图",
+    "linkedin": "Today's Market Story — Conflict, chokepoints, and risk repricing。\n\n这份可视化简报汇总了触发点、时间线与影响路径。",
+    "x": "Today's Market Story：Conflict, chokepoints, and risk repricing。一图看懂事件链与市场影响。#市场 #宏观 #地缘政治"
+  }
 }

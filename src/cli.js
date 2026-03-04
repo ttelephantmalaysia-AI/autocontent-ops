@@ -28,9 +28,14 @@ function readJson(name, fallback = null) {
   return JSON.parse(fs.readFileSync(p, 'utf8'));
 }
 
+function argValue(flag, fallback = '') {
+  const i = args.indexOf(flag);
+  return i >= 0 && args[i + 1] ? args[i + 1] : fallback;
+}
+
 function fetchText(url) {
   return new Promise((resolve, reject) => {
-    const req = https.get(url, { headers: { 'User-Agent': 'autocontent-ops/0.1.0' } }, (res) => {
+    const req = https.get(url, { headers: { 'User-Agent': 'autocontent-ops/0.1.2' } }, (res) => {
       if (res.statusCode >= 300 && res.statusCode < 400 && res.headers.location) {
         fetchText(res.headers.location).then(resolve).catch(reject);
         return;
@@ -71,15 +76,28 @@ function parseRssItems(xml) {
   return items;
 }
 
+function applyKeywordFilter(items, keywordsRaw) {
+  if (!keywordsRaw) return items;
+  const kws = keywordsRaw.split(',').map(s => s.trim().toLowerCase()).filter(Boolean);
+  if (!kws.length) return items;
+  const out = items.filter(i => {
+    const text = `${i.title} ${i.summary}`.toLowerCase();
+    return kws.some(k => text.includes(k));
+  });
+  console.log(`🔎 keyword filter (${kws.join(', ')}) -> ${out.length} items`);
+  return out;
+}
+
 async function fetchCmd() {
-  const feedArgs = args.slice(1);
+  const feedArgs = args.slice(1).filter(a => !a.startsWith('--') && !a.includes(','));
   const feeds = feedArgs.length ? feedArgs : defaultFeeds;
+  const keywords = argValue('--keywords', '');
   const all = [];
 
   for (const feed of feeds) {
     try {
       const xml = await fetchText(feed);
-      const parsed = parseRssItems(xml).slice(0, 8).map((x) => ({ ...x, source: feed }));
+      const parsed = parseRssItems(xml).slice(0, 10).map((x) => ({ ...x, source: feed }));
       all.push(...parsed);
       console.log(`• ${feed} -> ${parsed.length} items`);
     } catch (e) {
@@ -93,10 +111,12 @@ async function fetchCmd() {
     if (!dedup.has(key)) dedup.set(key, item);
   }
 
+  const filtered = applyKeywordFilter([...dedup.values()], keywords);
   const normalized = {
     generatedAt: new Date().toISOString(),
-    count: dedup.size,
-    items: [...dedup.values()].slice(0, 20)
+    keywords: keywords || null,
+    count: filtered.length,
+    items: filtered.slice(0, 20)
   };
 
   writeJson('fetched.json', normalized);
@@ -129,12 +149,25 @@ function captionCmd() {
   const brief = readJson('brief.json', {});
   const headline = brief.headline || 'Market update';
   const sub = brief.subheadline || '';
+  const lang = argValue('--lang', 'en').toLowerCase();
 
-  const captions = {
-    instagram: `${headline}\n\n${sub}\nSwipe for the key trigger, timeline, and what to watch next.\n\n#MarketUpdate #Geopolitics #Macro #Trading #Infographic`,
+  const en = {
+    instagram: `${headline}\n\n${sub}\nSwipe for trigger, timeline, and what to watch next.\n\n#MarketUpdate #Geopolitics #Macro #Trading #Infographic`,
     linkedin: `${headline} — ${sub}.\n\nThis visual brief summarizes trigger, timeline, and implications in one slide set.`,
     x: `${headline}: ${sub}. Visual breakdown in one thread-style infographic. #Markets #Macro #Geopolitics`
   };
+
+  const zh = {
+    instagram: `${headline}\n\n${sub}\n滑动查看：触发点、时间线和后续观察重点。\n\n#市场快讯 #地缘政治 #宏观 #交易 #信息图`,
+    linkedin: `${headline} — ${sub}。\n\n这份可视化简报汇总了触发点、时间线与影响路径。`,
+    x: `${headline}：${sub}。一图看懂事件链与市场影响。#市场 #宏观 #地缘政治`
+  };
+
+  const captions = lang === 'zh' || lang === 'cn'
+    ? { lang: 'zh', ...zh }
+    : lang === 'bilingual'
+      ? { lang: 'bilingual', en, zh }
+      : { lang: 'en', ...en };
 
   writeJson('captions.json', captions);
 }
@@ -163,7 +196,10 @@ async function main() {
     case 'pack': packCmd(); break;
     default:
       console.log('AutoContent Ops CLI');
-      console.log('Usage: autocontent <fetch|brief|caption|pack> [feedUrls...]');
+      console.log('Usage: autocontent <fetch|brief|caption|pack> [options]');
+      console.log('Options:');
+      console.log('  --keywords "iran,oil,gold"   filter fetched stories');
+      console.log('  --lang en|zh|bilingual       caption output language');
   }
 }
 
