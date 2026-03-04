@@ -1,0 +1,6 @@
+{
+  "name": "Market News",
+  "headlinePattern": "Today's Market Story",
+  "sections": ["Trigger", "Timeline", "Implications", "Watchlist"],
+  "platforms": ["instagram", "linkedin", "x"]
+}

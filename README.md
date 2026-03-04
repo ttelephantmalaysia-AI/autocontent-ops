@@ -1,26 +1,64 @@
 # AutoContent Ops
 
-News-to-Infographic-to-Social pipeline for small businesses.
+**News → Brief → Caption → Publish Pack** for small teams.
 
-## What this project does
+AutoContent Ops helps you turn fast-moving news into infographic-ready briefs and social captions in minutes.
 
-- Fetches relevant news/topics
-- Builds infographic-ready briefs
-- Generates platform-specific captions/hashtags
-- Exports a publish-ready content pack
+## Why this exists
 
-## MVP Scope (v0.1.0)
+Most SMB teams don’t have a full editorial desk. This tool gives a repeatable content pipeline:
 
-- [ ] `fetch`: ingest RSS/URLs and normalize
-- [ ] `brief`: produce structured infographic brief JSON
-- [ ] `caption`: generate IG/LinkedIn/X caption variants
-- [ ] `pack`: output image + caption + hashtags to fixed folder
-- [ ] Human-in-the-loop review before posting
+- Fetch relevant stories from trusted feeds
+- Generate an infographic-ready brief
+- Generate platform-specific captions
+- Export a publish-ready content pack with review checklist
 
-## Why
+## Quickstart (30 seconds)
 
-Small teams need consistent content output without a full editorial operation.
+```bash
+git clone https://github.com/ttelephantmalaysia-AI/autocontent-ops.git
+cd autocontent-ops
+node src/cli.js fetch
+node src/cli.js brief
+node src/cli.js caption
+node src/cli.js pack
+```
 
-## Status
+Outputs are written to `./out`.
 
-Bootstrapping repo and roadmap.
+## CLI Commands
+
+- `fetch [feedUrls...]` → ingest RSS and normalize to `out/fetched.json`
+- `brief` → build structured brief to `out/brief.json`
+- `caption` → generate IG/LinkedIn/X captions to `out/captions.json`
+- `pack` → create publish pack metadata to `out/pack.json`
+
+## Example templates
+
+See `examples/`:
+
+- `market-news-template.json`
+- `local-business-promo-template.json`
+- `event-recap-template.json`
+
+## Demo output snapshot
+
+- `out/fetched.json` — normalized source data
+- `out/brief.json` — infographic narrative skeleton
+- `out/captions.json` — multi-platform captions
+- `out/pack.json` — publish-ready checklist + assets
+
+## Roadmap
+
+- [x] v0.1.0 scaffold (CLI + templates + contribution docs)
+- [x] v0.1.1 real RSS ingestion and structured outputs
+- [ ] v0.2.0 keyword filtering + bilingual captions
+- [ ] v0.3.0 plugin system + integrations
+
+## Contributing
+
+PRs and issues are welcome. See [CONTRIBUTING.md](./CONTRIBUTING.md).
+
+## License
+
+MIT

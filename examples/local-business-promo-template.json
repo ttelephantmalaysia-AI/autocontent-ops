@@ -1,0 +1,6 @@
+{
+  "name": "Local Business Promo",
+  "headlinePattern": "This Week at {businessName}",
+  "sections": ["Offer", "Why It Matters", "How To Join"],
+  "platforms": ["instagram", "facebook", "tiktok"]
+}

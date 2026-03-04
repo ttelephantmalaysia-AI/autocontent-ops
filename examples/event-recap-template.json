@@ -1,0 +1,6 @@
+{
+  "name": "Event Recap",
+  "headlinePattern": "Event Recap: {eventName}",
+  "sections": ["Highlights", "Takeaways", "What's Next"],
+  "platforms": ["instagram", "linkedin", "x"]
+}
