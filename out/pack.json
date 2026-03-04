@@ -1,0 +1,12 @@
+{
+  "assets": {
+    "image": "/tmp/openclaw/uploads/notebooklm_latest_infographic.png",
+    "brief": "/Users/dino/.openclaw/workspace/autocontent-ops/out/brief.json",
+    "captions": "/Users/dino/.openclaw/workspace/autocontent-ops/out/captions.json"
+  },
+  "checklist": [
+    "Human review",
+    "Platform policy check",
+    "Final approval before publish"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "name": "autocontent-ops",
+  "version": "0.1.0",
+  "description": "News-to-Infographic-to-Social pipeline for SMB",
+  "type": "module",
+  "bin": {
+    "autocontent": "src/cli.js"
+  },
+  "scripts": {
+    "start": "node src/cli.js",
+    "fetch": "node src/cli.js fetch",
+    "brief": "node src/cli.js brief",
+    "caption": "node src/cli.js caption",
+    "pack": "node src/cli.js pack"
+  },
+  "license": "MIT"
+}
