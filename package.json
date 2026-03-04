@@ -11,7 +11,8 @@
     "fetch": "node src/cli.js fetch",
     "brief": "node src/cli.js brief",
     "caption": "node src/cli.js caption",
-    "pack": "node src/cli.js pack"
+    "pack": "node src/cli.js pack",
+    "organize": "node scripts/organize-notebooklm.js"
   },
   "license": "MIT"
 }
