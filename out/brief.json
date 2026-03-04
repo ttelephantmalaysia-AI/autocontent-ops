@@ -1,11 +1,50 @@
 {
   "headline": "Today's Market Story",
   "subheadline": "Conflict, chokepoints, and risk repricing",
-  "points": [
-    "Key trigger and timeline",
-    "Who is involved",
-    "What changed in risk landscape",
-    "What to monitor next"
+  "sections": {
+    "trigger": "Gas and oil prices soar and shares tumble on fears conflict could escalate",
+    "timeline": [
+      "Gas and oil prices soar and shares tumble on fears conflict could escalate",
+      "US and Ecuador forces launch operation to fight drug trafficking",
+      "What to know about the 'two sessions',  China's biggest political meeting"
+    ],
+    "implications": [
+      "Energy route risks may raise volatility",
+      "Defensive positioning tends to increase under uncertainty",
+      "Cross-asset reactions can diverge from textbook patterns"
+    ]
+  },
+  "sourceLinks": [
+    {
+      "title": "Gas and oil prices soar and shares tumble on fears conflict could escalate",
+      "url": "https://www.bbc.com/news/articles/cr5lz0vgy52o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "title": "US and Ecuador forces launch operation to fight drug trafficking",
+      "url": "https://www.bbc.com/news/articles/cgjzz4gn64zo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "title": "What to know about the 'two sessions',  China's biggest political meeting",
+      "url": "https://www.bbc.com/news/articles/c2lrxyke7kro?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "title": "TikTok won't protect DMs with controversial privacy tech, saying it would put users at risk",
+      "url": "https://www.bbc.com/news/articles/cly2m5e5ke4o?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "title": "South Korea woman and doctors guilty of murder of newborn baby",
+      "url": "https://www.bbc.com/news/articles/c2k88j5x9wdo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    },
+    {
+      "title": "US commerce secretary to testify before Congress about Epstein ties",
+      "url": "https://www.bbc.com/news/articles/cy7jm7k7pxzo?at_medium=RSS&amp;at_campaign=rss",
+      "source": "https://feeds.bbci.co.uk/news/world/rss.xml"
+    }
   ],
   "disclaimer": "For informational use only. Not investment advice."
 }
